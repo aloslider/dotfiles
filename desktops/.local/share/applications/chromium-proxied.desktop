@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Chromium (proxied)
+Comment=Web Browser
+Exec=/usr/bin/chromium --proxy-server=socks5://localhost:7890 %U
+Icon=chromium
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+StartupWMClass=chromium

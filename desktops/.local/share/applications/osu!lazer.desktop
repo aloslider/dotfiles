@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=osu!lazer
+Exec=~/apps/osu.AppImage
+Categories=Game
+Terminal=false
