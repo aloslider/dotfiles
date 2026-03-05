@@ -4,7 +4,7 @@ return {
   "uhs-robert/sshfs.nvim",
   opts = {
 		ui = {
-			file_picker = {
+			local_picker = {
 				preferred_picker = picker,
 			},
 			remote_picker = {
