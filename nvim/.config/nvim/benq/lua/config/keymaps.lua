@@ -23,11 +23,6 @@ vim.keymap.set({ 'n', 'v' }, "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Las
 vim.keymap.set({ 'n', 'v' }, "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First tab" })
 
 -- Windows
-vim.keymap.set({ 'n', 'v' }, "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-vim.keymap.set({ 'n', 'v' }, "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-vim.keymap.set({ 'n', 'v' }, "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-vim.keymap.set({ 'n', 'v' }, "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
-
 vim.keymap.set({ 'n', 'v' }, "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 vim.keymap.set({ 'n', 'v' }, "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
 vim.keymap.set({ 'n', 'v' }, "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
