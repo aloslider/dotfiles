@@ -1,0 +1,7 @@
+# Swap files
+*.swp
+
+# ZSH & OMZ
+.oh-my-zsh/
+.zcompdump*
+.histfile
