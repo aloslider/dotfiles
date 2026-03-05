@@ -1,0 +1,24 @@
+vim.opt.winborder = "rounded"
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.showtabline = 2
+vim.opt.signcolumn = "yes"
+vim.opt.wrap = true
+vim.opt.cursorcolumn = false
+vim.opt.ignorecase = true
+vim.opt.smartindent = true
+vim.opt.termguicolors = true
+vim.opt.undofile = true
+vim.opt.number = true
+vim.opt.relativenumber = false
+-- vim.o.cmdheight=0
+vim.opt.list = false
+vim.opt.listchars = {
+  tab = "→ ",
+  space = "·",
+  nbsp = "⍽",
+  trail = "·",
+  extends = "…",
+  precedes = "…",
+  eol = "↲",
+}
