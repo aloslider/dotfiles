@@ -10,5 +10,4 @@ vim.diagnostic.config({
 	virtual_lines = {
 		current_line = true
 	},
-	update_in_insert = true
 })
