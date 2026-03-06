@@ -9,6 +9,7 @@ return {
 	},
 	opts = {
 		filesystem = {
+			hijack_netrw_behavior = "disabled",
       follow_current_file = {
         enabled = true,
       },
@@ -21,6 +22,6 @@ return {
 				require("neo-tree.command").execute({ toggle = true })
 			end,
 		  desc = "Open neo-tree"
-		}
+		},
 	}
 }
