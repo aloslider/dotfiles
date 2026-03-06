@@ -1,9 +1,10 @@
 return {
 	'nvim-mini/mini.diff',
 	version = false,
-	opts = function (_, opts)
+	lazy = false,
+	config = function()
 		local diff = require('mini.diff')
-		opts = {
+		diff.setup({
 			source = {
 				diff.gen_source.git(),
 				diff.gen_source.save()
@@ -11,7 +12,25 @@ return {
 			view = {
 				style = 'sign'
 			}
-		}
-		return opts
-	end
+		})
+	end,
+	-- opts = function (_, opts)
+	-- 	local diff = require('mini.diff')
+	-- 	opts = {
+	-- 		source = {
+	-- 			diff.gen_source.git(),
+	-- 			diff.gen_source.save()
+	-- 		},
+	-- 		view = {
+	-- 			style = 'sign'
+	-- 		}
+	-- 	}
+	-- 	return opts
+	-- end,
+	-- keys = {
+	-- 	{ "<leader>h", function() require("mini.diff").toggle_overlay() end, desc = "Toggle hunks view" },
+	-- },
+	keys = {
+		{ "<leader>h", function() require("mini.diff").toggle_overlay() end, desc = "Toggle hunks view" },
+	},
 }
