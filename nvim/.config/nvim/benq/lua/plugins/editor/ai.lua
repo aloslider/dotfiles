@@ -1,5 +1,5 @@
-return { 
-	'nvim-mini/mini.ai',
+return {
+	"nvim-mini/mini.ai",
 	version = '*',
 	opts = {},
 }

@@ -1,14 +1,14 @@
 return {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-		enabled = false,
-    priority = 1000,
-    config = function()
-        require("tiny-inline-diagnostic").setup({
-					preset = "modern",
-					set_arrow_to_diag_color = true,
-					show_all_diags_on_cursorline = true,
-				})
-        vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
-    end,
+	"rachartier/tiny-inline-diagnostic.nvim",
+	event = "VeryLazy",
+	enabled = false,
+	priority = 1000,
+	config = function()
+		require("tiny-inline-diagnostic").setup({
+			preset = "modern",
+			set_arrow_to_diag_color = true,
+			show_all_diags_on_cursorline = true,
+		})
+		vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+	end,
 }

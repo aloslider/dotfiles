@@ -1,29 +1,29 @@
-local vue_language_server_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
+local vue_language_server_path = vim.fn.expand "$MASON/packages" .. "/vue-language-server" .. "/node_modules/@vue/language-server"
 
 return {
-	cmd = { 'vtsls', '--stdio' },
+	cmd = { "vtsls", "--stdio" },
 	init_options = {
-		hostInfo = 'neovim',
+		hostInfo = "neovim",
 	},
 	filetypes = {
-		'javascript',
-		'javascriptreact',
-		'typescript',
-		'typescriptreact',
-		'vue',
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
 	},
 	root_dir = function(bufnr, on_dir)
 		-- The project root is where the LSP can be started from
 		-- As stated in the documentation above, this LSP supports monorepos and simple projects.
 		-- We select then from the project root, which is identified by the presence of a package
 		-- manager lock file.
-		local root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
+		local root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
 		-- Give the root markers equal priority by wrapping them in a table
-		root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers, { '.git' } }
-		or vim.list_extend(root_markers, { '.git' })
+		root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, { ".git" } }
+		or vim.list_extend(root_markers, { ".git" })
 		-- exclude deno
-		local deno_root = vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc' })
-		local deno_lock_root = vim.fs.root(bufnr, { 'deno.lock' })
+		local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
+		local deno_lock_root = vim.fs.root(bufnr, { "deno.lock" })
 		local project_root = vim.fs.root(bufnr, root_markers)
 		if deno_lock_root and (not project_root or #deno_lock_root > #project_root) then
 			-- deno lock is closer than package manager lock, abort
@@ -42,10 +42,10 @@ return {
 			tsserver = {
 				globalPlugins = {
 					{
-						name = '@vue/typescript-plugin',
+						name = "@vue/typescript-plugin",
 						location = vue_language_server_path,
-						languages = { 'vue' },
-						configNamespace = 'typescript',
+						languages = { "vue" },
+						configNamespace = "typescript",
 					}
 				}
 			}

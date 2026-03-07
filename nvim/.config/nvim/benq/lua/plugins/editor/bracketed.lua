@@ -1,5 +1,5 @@
 return {
-	'nvim-mini/mini.bracketed',
+	"nvim-mini/mini.bracketed",
 	version = false,
 	opts = {},
 }

@@ -1,5 +1,5 @@
 return {
-	'nvim-mini/mini.jump2d',
+	"nvim-mini/mini.jump2d",
 	version = false,
 	opts = {}
 }

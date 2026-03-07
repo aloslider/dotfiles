@@ -1,6 +1,6 @@
-return { 
-	'nvim-mini/mini.cursorword', 
-	version = '*',
+return {
+	"nvim-mini/mini.cursorword",
+	version = "*",
 	opts = {
 		delay = 0,
 	}

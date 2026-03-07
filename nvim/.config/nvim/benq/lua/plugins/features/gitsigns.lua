@@ -1,8 +1,8 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	opts = {
-		-- signs_staged_enable = false,
-		-- signcolumn = false,
+		signs_staged_enable = false,
+		signcolumn = false,
 	},
 	keys = {
 		{ "<leader>gp", function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },

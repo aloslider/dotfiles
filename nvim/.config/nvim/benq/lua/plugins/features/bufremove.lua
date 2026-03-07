@@ -1,5 +1,5 @@
-return { 
-	'nvim-mini/mini.bufremove',
+return {
+	"nvim-mini/mini.bufremove",
 	version = false,
 	opts = {}
 }
