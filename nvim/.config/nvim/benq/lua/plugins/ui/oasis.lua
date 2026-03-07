@@ -5,6 +5,6 @@ return {
   priority = 1000,
 	opts = {},
   config = function()
-    vim.cmd.colorscheme("oasis-abyss")
+    vim.cmd.colorscheme("oasis-midnight")
   end
 }
