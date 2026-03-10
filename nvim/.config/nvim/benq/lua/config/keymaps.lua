@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Clear search highlight
-vim.keymap.set("n", "<Esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight" })
+vim.keymap.set("n", "<Esc>", "<cmd>noh<cr>", { desc = "Clear search highlight" })
 
 -- Move current line/selection up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
