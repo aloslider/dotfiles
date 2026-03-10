@@ -15,7 +15,7 @@ autoload -Uz compinit
 compinit
 
 # Exports
-export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.dotnet/tools:$PATH"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/go/bin:$HOME/.dotnet/tools:$PATH"
 export ZSH="$HOME/.config/zsh/.oh-my-zsh"
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
@@ -23,6 +23,7 @@ export TERM="kitty"
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVIM_APPNAME="nvim/benq"
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
+export GOPATH="$HOME/.local/go"
 
 # Aliases
 
