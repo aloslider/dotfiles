@@ -5,3 +5,7 @@
 .oh-my-zsh/
 .zcompdump*
 .histfile
+
+# Nvim
+# ignore theme config
+theme.lua
