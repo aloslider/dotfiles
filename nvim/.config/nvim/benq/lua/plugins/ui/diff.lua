@@ -10,7 +10,7 @@ return {
 				diff.gen_source.save()
 			},
 			view = {
-				style = "sign"
+				style = "number"
 			}
 		})
 	end,

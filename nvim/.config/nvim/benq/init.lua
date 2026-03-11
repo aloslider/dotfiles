@@ -7,8 +7,4 @@ require("config.theme") -- ignored by git
 
 vim.lsp.enable({ "nixd" }) -- installed locally
 
-vim.diagnostic.config({
-	virtual_lines = {
-		current_line = true
-	},
 })
