@@ -4,3 +4,4 @@ Name=osu!lazer
 Exec=~/apps/osu.AppImage
 Categories=Game
 Terminal=false
+MimeType=application/x-osu!lazer;
