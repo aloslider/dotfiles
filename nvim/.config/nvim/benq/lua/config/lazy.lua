@@ -18,9 +18,9 @@ require("lazy").setup({
   spec = {
     { import = "plugins.editor" },
     { import = "plugins.features" },
+    { import = "plugins.language-specific.dotnet" },
     { import = "plugins.lsp" },
     { import = "plugins.ui" },
   },
-  install = { colorscheme = { "kanagawa" } },
   checker = { enabled = false },
 })
