@@ -7,7 +7,6 @@ return {
 				"docker_compose_language_service",
 				"lua_ls",
 				"html",
-				"netcoredbg",
 				-- "roslyn", install with :MasonInstall
 				"vtsls",
 				"vue_ls",
