@@ -1,0 +1,18 @@
+packages:
+  arch:
+    - 7zip
+    - base-devel
+    - bat
+    - curl
+    - eza
+    - fzf
+    - git
+    - paru
+    - ripgrep
+    - tmux
+    - wget
+    - unzip
+    - zsh
+  aur:
+    - prizrak-box-bin
+    - tree-sitter-cli-github-bin

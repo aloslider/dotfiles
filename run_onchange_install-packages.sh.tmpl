@@ -1,0 +1,31 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "Installing and updating packages..."
+
+{{ if eq .chezmoi.osRelease.idLike "arch" }}
+sudo pacman -Sy --noconfirm
+
+pkgs=()
+{{ range .packages.arch }}
+pkgs+=("{{ . }}")
+{{ end }}
+
+if [[ ${#pkgs[@]} -gt 0 ]]; then
+  echo "Installing pacman packages"
+  sudo pacman -S --noconfirm "${pkgs[@]}"
+fi
+
+pkgs=()
+{{ range .packages.aur }}
+pkgs+=("{{ . }}")
+{{ end }}
+
+if [[ ${#pkgs[@]} -gt 0 ]]; then
+  echo "Installing AUR packages"
+  paru -S --noconfirm "${pkgs[@]}"
+fi
+
+{{ end }}
+
+echo "Done"

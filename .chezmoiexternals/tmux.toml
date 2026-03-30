@@ -1,0 +1,16 @@
+# tmux
+[".config/tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm"
+
+[".config/tmux/plugins/tmux-resurrect"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-resurrect"
+
+[".config/tmux/plugins/tmux-continuum"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-continuum"
+
+[".config/tmux/plugins/tmux-sensible"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-sensible"

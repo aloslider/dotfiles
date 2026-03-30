@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=osu!lazer
+Exec=~/apps/osu/osu.AppImage %u
+Icon=x-osu-lazer
+Categories=Game
+Terminal=false
+MimeType=application/x-osu-lazer;
