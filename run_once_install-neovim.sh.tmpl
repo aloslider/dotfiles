@@ -5,6 +5,11 @@ NVIM_DIR="${HOME}/apps/neovim"
 BUILD_TYPE="Debug"
 BRANCH="master"
 
+if [[ -x "${NVIM_DIR}/bin/nvim" ]]; then
+    echo "Neovim already installed at ${NVIM_DIR}"
+    exit 0
+fi
+
 echo "Installing neovim from source"
 echo "Target folder: ${NVIM_DIR}"
 echo "Branch: ${BRANCH}"
