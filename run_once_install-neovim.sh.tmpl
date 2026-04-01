@@ -1,17 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
-NVIM_DIR="${HOME}/apps/neovim"
+SRC_DIR="${HOME}/apps/neovim"
+BIN_DIR="${HOME}/.local"
 BUILD_TYPE="Debug"
 BRANCH="master"
 
-if [[ -x "${NVIM_DIR}/bin/nvim" ]]; then
-    echo "Neovim already installed at ${NVIM_DIR}"
-    exit 0
+if [[ -x "${BIN_DIR}/bin/nvim" ]]; then
+  echo "Neovim already installed at ${BIN_DIR}"
+  exit 0
 fi
 
 echo "Installing neovim from source"
-echo "Target folder: ${NVIM_DIR}"
+echo "Target folder: ${SRC_DIR}"
 echo "Branch: ${BRANCH}"
 echo "Build type: ${BUILD_TYPE}"
 
@@ -21,17 +22,17 @@ sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git
 
 mkdir -p "${HOME}/apps"
 
-if [[ -d "${NVIM_DIR}/src" ]]; then
-  cd "${NVIM_DIR}/src"
+if [[ -d "${SRC_DIR}/src" ]]; then
+  cd "${SRC_DIR}/src"
   git fetch --all --prune
   git checkout "${BRANCH}"
   git pull
 else
-  git clone https://github.com/neovim/neovim.git "${NVIM_DIR}/src"
-  cd "${NVIM_DIR}/src"
+  git clone https://github.com/neovim/neovim.git "${SRC_DIR}/src"
+  cd "${SRC_DIR}/src"
   git checkout "${BRANCH}"
 fi
 
 rm -r build/
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${NVIM_DIR}"
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${BIN_DIR}"
 make install
