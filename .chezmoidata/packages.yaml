@@ -1,8 +1,11 @@
 packages:
   arch:
     - 7zip
+    - age
     - base-devel
     - bat
+    - btop
+    - bw
     - curl
     - eza
     - fzf
