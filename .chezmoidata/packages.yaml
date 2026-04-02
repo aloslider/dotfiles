@@ -10,6 +10,7 @@ packages:
     - eza
     - fzf
     - git
+    - lazygit
     - paru
     - ripgrep
     - tmux
