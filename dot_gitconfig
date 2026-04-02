@@ -1,0 +1,27 @@
+[user]
+    name = aloslider
+    email = 53711835+aloslider@users.noreply.github.com
+
+[core]
+    editor = vim
+    autocrlf = input
+    quotepath = false
+
+[init]
+    defaultBranch = master
+
+[push]
+    default = current
+
+[color]
+    ui = auto
+
+[diff]
+    colorMoved = default
+
+[merge]
+    conflictStyle = zdiff3
+
+[rebase]
+    autosquash = true
+    autostash = true
