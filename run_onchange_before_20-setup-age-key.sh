@@ -7,12 +7,24 @@ KEY_FILE="$KEY_DIR/key.txt"
 mkdir -p "$KEY_DIR"
 chmod 700 "$KEY_DIR"
 
-if (bw status | grep -q '"status": "locked"';) then
+VW_URL="https://vault.benq-serv.top"
+bw config server "$VW_URL" >/dev/null
+
+STATUS=$(bw status 2>/dev/null | jq -r '.status')
+case "$STATUS" in
+  "locked")
     export BW_SESSION=$(bw unlock --raw)
-fi
+    ;;
+  "unauthenticated")
+    export BW_SESSION=$(bw login --raw)
+    ;;
+  *)
+    echo "Unknown bw status: $STATUS"
+    exit 1
+    ;;
+esac
 
 bw sync
-
 bw get item "age-keys" \
   | jq -r '.fields[] | select(.name == "private_key") | .value' \
   > "$KEY_FILE"

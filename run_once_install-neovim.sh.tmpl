@@ -33,6 +33,6 @@ else
   git checkout "${BRANCH}"
 fi
 
-rm -r build/
+rm -rf ${SRC_DIR}/build
 make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${BIN_DIR}"
 make install
