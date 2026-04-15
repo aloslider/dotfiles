@@ -1,6 +1,10 @@
 encryption = "age"
 [age]
+    {{- if eq .chezmoi.osRelease.id "nixos" }}
+    identity = "/etc/age/key.txt"
+    {{- else }}
     identity = "~/.config/chezmoi/key.txt"
+    {{- end }}
     recipient = "age1tl5hp6v0t38fl8gxuqds40z503mwz885ev22au4jdy5r24aak3zsza23sx"
 
 [bitwarden]
