@@ -1,4 +1,8 @@
 #!/bin/bash
+{{ if -eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
 set -euo pipefail
 
 ZSH_PATH="$(which zsh)"
