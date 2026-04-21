@@ -7,11 +7,13 @@ packages:
     - btop
     - bitwarden-cli
     - curl
+    - dotnet-sdk
     - eza
     - fzf
     - git
     - lazygit
     - paru
+    - npm
     - ripgrep
     - tmux
     - wget

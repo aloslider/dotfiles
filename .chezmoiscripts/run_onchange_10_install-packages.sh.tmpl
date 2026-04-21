@@ -1,5 +1,5 @@
 #!/bin/bash
-{{ if -eq .chezmoi.osRelease.id "nixos" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
 exit 0
 {{ end }}
 
@@ -12,22 +12,26 @@ sudo pacman -Sy --noconfirm
 
 pkgs=()
 {{ range .packages.arch }}
-pkgs+=("{{ . }}")
+if ! pacman -Q "{{ . }}" &>/dev/null; then
+  pkgs+=("{{ . }}")
+fi
 {{ end }}
 
 if [[ ${#pkgs[@]} -gt 0 ]]; then
   echo "Installing pacman packages"
-  sudo pacman -S --noconfirm "${pkgs[@]}"
+  sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
-pkgs=()
+aur_pkgs=()
 {{ range .packages.aur }}
-pkgs+=("{{ . }}")
+if ! pacman -Q "{{ . }}" &>/dev/null; then
+  aur_pkgs+=("{{ . }}")
+fi
 {{ end }}
 
-if [[ ${#pkgs[@]} -gt 0 ]]; then
+if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
   echo "Installing AUR packages"
-  paru -S --noconfirm "${pkgs[@]}"
+  paru -S --noconfirm --needed "${aur_pkgs[@]}" 
 fi
 
 {{ end }}
