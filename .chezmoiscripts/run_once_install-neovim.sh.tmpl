@@ -20,7 +20,7 @@ echo "Target folder: ${SRC_DIR}"
 echo "Branch: ${BRANCH}"
 echo "Build type: ${BUILD_TYPE}"
 
-{{ if eq .chezmoi.osRelease.idLike "arch" }}
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
 sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git
 {{ end }}
 

@@ -7,7 +7,7 @@ set -euo pipefail
 
 echo "Installing and updating packages..."
 
-{{ if eq .chezmoi.osRelease.idLike "arch" }}
+{{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
 sudo pacman -Sy --noconfirm
 
 pkgs=()
@@ -33,7 +33,6 @@ if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
   echo "Installing AUR packages"
   paru -S --noconfirm --needed "${aur_pkgs[@]}" 
 fi
-
 {{ end }}
 
 echo "Done"
