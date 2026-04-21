@@ -12,7 +12,6 @@ packages:
     - fzf
     - git
     - lazygit
-    - paru
     - npm
     - ripgrep
     - tmux
