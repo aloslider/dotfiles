@@ -11,6 +11,10 @@
     type = "git-repo"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting"
 
+[".config/zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
+    type = "git-repo"
+    url = "https://github.com/jeffreytse/zsh-vi-mode"
+
 [".config/zsh/.oh-my-zsh/custom/themes/powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k"
