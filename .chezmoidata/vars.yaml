@@ -1,0 +1,3 @@
+defaultAgeKeyPath: "~/.config/age/key.txt"
+nixosAgeKeyPath: "/etc/age/key.txt"
+skipCreatingAgeKey: true

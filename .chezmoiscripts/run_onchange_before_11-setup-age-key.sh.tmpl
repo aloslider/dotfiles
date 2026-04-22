@@ -7,8 +7,13 @@ set -euo pipefail
 
 echo "Setting up age key..."
 
-KEY_DIR="$HOME/.config/chezmoi"
-KEY_FILE="$KEY_DIR/key.txt"
+KEY_FILE="{{ .vars.defaultAgeKeyPath }}"
+KEY_DIR="$(dirname "$KEY_FILE")"
+
+{{ if .vars.skipCreatingAgeKey }}
+echo "Expecting age key to be at $KEY_FILE"
+exit 0
+{{ end }}
 
 mkdir -p "$KEY_DIR"
 chmod 700 "$KEY_DIR"
