@@ -1,10 +1,11 @@
 #!/bin/bash
-exit 0
 {{ if eq .chezmoi.osRelease.id "nixos" }}
 exit 0
 {{ end }}
 
 set -euo pipefail
+
+echo "Setting up age key..."
 
 KEY_DIR="$HOME/.config/chezmoi"
 KEY_FILE="$KEY_DIR/key.txt"
