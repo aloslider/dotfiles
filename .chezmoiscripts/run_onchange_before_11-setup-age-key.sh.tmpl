@@ -7,10 +7,10 @@ set -euo pipefail
 
 echo "Setting up age key..."
 
-KEY_FILE="{{ .vars.defaultAgeKeyPath }}"
+KEY_FILE="{{ .defaultAgeKeyPath }}"
 KEY_DIR="$(dirname "$KEY_FILE")"
 
-{{ if .vars.skipCreatingAgeKey }}
+{{ if .skipCreatingAgeKey }}
 echo "Expecting age key to be at $KEY_FILE"
 exit 0
 {{ end }}
