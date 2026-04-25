@@ -14,11 +14,14 @@ packages:
     - lazygit
     - npm
     - openssh
+    - python-pip
     - ripgrep
     - tmux
     - wget
     - unzip
     - zsh
   aur:
+    - nixfmt
     - prizrak-box-bin
+    - python-xmlformatter
     - tree-sitter-cli-github-bin

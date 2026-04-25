@@ -1,2 +1,4 @@
 .local/share/lua-language-server/log
 .local/share/lua-language-server/log/**
+.local/share/lua-language-server/meta
+.local/share/lua-language-server/meta/**

@@ -7,12 +7,17 @@ set -euo pipefail
 
 echo "Installing LSPs for Neovim..."
 
+echo "Installing from npm..."
 npm install -g --prefix ~/.local \
   @vtsls/language-server \
   @vue/language-server \
-  vscode-langservers-extracted
+  vscode-langservers-extracted \
+  prettier
 
+echo "Installing from dotnet..."
 dotnet tool install -g roslyn-language-server --prerelease
 dotnet tool install -g csharpier
+
+echo "Installing from pip..."
 
 echo "Done"
