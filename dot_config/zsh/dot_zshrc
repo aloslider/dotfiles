@@ -22,8 +22,13 @@ export EDITOR="nvim"
 export TERM="kitty"
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVIM_APPNAME="nvim/benq"
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export GOPATH="$HOME/.local/go"
+
+if [ -S "/run/user/$(id -u)/docker.sock" ]; then
+  export DOCKER_HOST="unix:///run/user/$(id -u)/docker.sock"
+elif [ -S "/var/run/docker.sock" ]; then
+  export DOCKER_HOST="unix:///var/run/docker.sock"
+fi
 
 # Aliases
 
