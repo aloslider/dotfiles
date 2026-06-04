@@ -9,11 +9,12 @@ echo "Installing Neovim..."
 
 SRC_DIR="${HOME}/apps/neovim"
 BIN_DIR="${HOME}/.local"
-BUILD_TYPE="Debug"
+BIN_PATH="${BIN_DIR}/bin/nvim"
+BUILD_TYPE="RelWithDebInfo"
 BRANCH="master"
 
-if [[ -x "${BIN_DIR}/bin/nvim" ]]; then
-  echo "Neovim already installed at ${BIN_DIR}"
+if [[ -x "${BIN_PATH}" ]]; then
+  echo "Neovim already installed at ${BIN_PATH}"
   exit 0
 fi
 
@@ -39,6 +40,7 @@ else
   git checkout "${BRANCH}"
 fi
 
+cd "${SRC_DIR}/src"
 rm -rf ${SRC_DIR}/build
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${BIN_DIR}"
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${BIN_DIR} -DMIN_LOG_LEVEL=1" CMAKE_BUILD_TYPE=${BUILD_TYPE}
 make install
