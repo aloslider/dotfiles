@@ -46,13 +46,6 @@ return {
 			desc = "Find keymaps",
 		},
 		{
-			"<leader>fb",
-			function()
-				require("fzf-lua").buffers()
-			end,
-			desc = "Find buffers",
-		},
-		{
 			"<leader>fB",
 			function()
 				require("fzf-lua").builtin()
