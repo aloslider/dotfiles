@@ -14,7 +14,6 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.number = true
 vim.opt.relativenumber = false
--- vim.o.cmdheight=0
 vim.opt.list = false
 vim.opt.listchars = {
   tab = "→ ",
@@ -25,6 +24,12 @@ vim.opt.listchars = {
   precedes = "…",
   eol = "↲",
 }
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.fillchars:append({ fold = " " })
 
 vim.filetype.add({
   pattern = {
