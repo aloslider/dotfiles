@@ -1,0 +1,13 @@
+[Unit]
+Description=Nirinit (Niri Session Manager)
+PartOf=graphical-session.target
+After=graphical-session.target niri.service
+
+[Service]
+Type=simple
+ExecStart=/home/%u/.cargo/bin/nirinit --save-interval 300
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
