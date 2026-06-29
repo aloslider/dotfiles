@@ -28,6 +28,19 @@ return {
     init = function()
       vim.g.no_plugin_maps = true
     end,
-    opts = {}
+    opts = {
+      -- select = {
+      --   enable = true,
+      --   lookahead = true,
+      --   keymaps = {
+      --     ["aa"] = "@parameter.outer",
+      --     ["ia"] = "@parameter.inner",
+      --     ["af"] = "@function.outer",
+      --     ["if"] = "@function.inner",
+      --     ["ac"] = "@class.outer",
+      --     ["ic"] = "@class.inner",
+      --   }
+      -- },
+    }
   }
 }
