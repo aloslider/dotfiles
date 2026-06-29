@@ -15,7 +15,7 @@ autoload -Uz compinit
 compinit
 
 # Exports
-export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/go/bin:$HOME/.dotnet/tools:$PATH"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/go/bin:$HOME/.dotnet/tools:$HOME/.cargo/bin:$PATH"
 export ZSH="$HOME/.config/zsh/.oh-my-zsh"
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
