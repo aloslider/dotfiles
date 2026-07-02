@@ -1,12 +1,9 @@
 #!/bin/sh
-{{ if eq .chezmoi.osRelease.id "nixos" }}
-exit 0
-{{ end }}
-
 set -euo pipefail
 
-echo "Installing packages..."
+echo "Installing native packages..."
 
+# 1. Arch-based
 {{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
 sudo pacman -Sy --noconfirm
 
@@ -48,5 +45,11 @@ if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
   paru -S --noconfirm --needed "${aur_pkgs[@]}" 
 fi
 {{ end }}
+
+# 2. NixOS
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
 
 echo "Done"
