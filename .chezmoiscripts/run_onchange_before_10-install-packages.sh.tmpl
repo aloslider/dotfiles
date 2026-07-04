@@ -1,9 +1,14 @@
 #!/bin/sh
 set -euo pipefail
 
+# NixOS
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
 echo "Installing native packages..."
 
-# 1. Arch-based
+# Arch-based
 {{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
 sudo pacman -Sy --noconfirm
 
@@ -19,7 +24,6 @@ if [[ ${#pkgs[@]} -gt 0 ]]; then
   sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
-# Install paru
 if command -v paru >/dev/null 2>&1; then
   echo "Paru is already installed."
 else
@@ -32,7 +36,6 @@ else
   rm -rf "$build_dir"
 fi
 
-# Install AUR pkgs
 aur_pkgs=()
 {{ range .packages.aur }}
 if ! pacman -Q "{{ . }}" &>/dev/null; then
@@ -41,15 +44,35 @@ fi
 {{ end }}
 
 if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
-  echo "Installing AUR packages"
+  echo "Installing AUR packages..."
   paru -S --noconfirm --needed "${aur_pkgs[@]}" 
 fi
 {{ end }}
 
-# 2. NixOS
-{{ if eq .chezmoi.osRelease.id "nixos" }}
-exit 0
+# Go packages
+go_pkgs=()
+{{ range .packages.go }}
+  go_pkgs+=("{{ . }}")
 {{ end }}
 
+if ! command -v go >/dev/null 2>&1; then
+  echo "Go is not installed, skipping packages installation..."
+else
+  for pkg in "${go_pkgs[@]}"; do
+    echo "Installing: $pkg"
+    go install "${pkg}@latest"
+  done
+fi
+
+# Nix packages
+if ! command -v nix >/dev/null 2>&1; then
+  echo "Nix is not installed, skipping packages installation..."
+else
+  FLAKE_DIR="$HOME/.config/nixpkgs"
+  if [ -d "$FLAKE_DIR" ] && [ -f "$FLAKE_DIR/flake.nix" ]; then
+    echo "Installing Nix packages..."
+    nix profile install "$FLAKE_DIR" || true
+  fi
+fi
 
 echo "Done"

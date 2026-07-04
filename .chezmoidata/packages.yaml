@@ -4,24 +4,34 @@ packages:
     - age
     - base-devel
     - bat
-    - btop
     - bitwarden-cli
+    - btop
     - curl
     - dotnet-sdk
     - eza
+    - fd
+    - ffmpeg 
     - fzf
     - git
+    - imagemagick
+    - jq
     - lazygit
     - npm
     - openssh
+    - poppler
     - python-pip
+    - resvg
     - ripgrep
     - tmux
-    - wget
     - unzip
+    - wget
+    - yazi 
+    - zoxide
     - zsh
   aur:
     - nixfmt
     - prizrak-box-bin
     - python-xmlformatter
     - tree-sitter-cli-github-bin
+  go:
+    - github.com/davidbudnick/redis-tui
