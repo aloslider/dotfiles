@@ -16,6 +16,24 @@ window-rule {
 }
 
 window-rule {
+  match app-id="librewolf" title="Picture-in-Picture"
+
+  open-floating true
+  open-focused false
+  open-maximized false
+
+  geometry-corner-radius 0
+
+  border { 
+    off 
+  }
+
+  default-column-width { fixed 480; }
+  default-window-height { fixed 270; }
+  default-floating-position x=40 y=40 relative-to="bottom-right"
+}
+
+window-rule {
   match app-id="librewolf"
   match app-id="chromium"
   match app-id="brave"
