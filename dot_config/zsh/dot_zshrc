@@ -31,6 +31,8 @@ elif [ -S "/var/run/docker.sock" ]; then
 fi
 
 # Aliases
+alias imgedit=gthumb
+alias disk=ncdu
 
 # lazy
 lg() {
