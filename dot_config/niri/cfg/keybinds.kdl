@@ -73,7 +73,7 @@ binds {
   Mod+TAB                             { focus-workspace-previous; }
 
   // ─── Layout Controls ───
-  Mod+CTRL+F                          { expand-column-to-available-width; }
+  Mod+F                               { expand-column-to-available-width; }
   Mod+C                               { center-column; }
   Mod+CTRL+C                          { center-visible-columns; }
   Mod+Minus                           { set-column-width "-10%"; }
@@ -83,7 +83,7 @@ binds {
 
   // ─── Modes ───
   Mod+T                               { toggle-window-floating; }
-  Mod+F                               { fullscreen-window; }
+  Mod+CTRL+F                          { fullscreen-window; }
   Mod+W                               { toggle-column-tabbed-display; }
 
   // ─── Screenshots ───
