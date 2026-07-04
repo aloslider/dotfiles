@@ -24,6 +24,7 @@ binds {
 
   // ─── Window Movement and Focus ───
   Mod+Shift+Q                         { close-window; }
+  Mod+Shift+V                         { switch-focus-between-floating-and-tiling; }
 
   Mod+Home                            { focus-column-first; }
   Mod+End                             { focus-column-last; }
