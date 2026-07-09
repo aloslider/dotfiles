@@ -7,6 +7,7 @@ packages:
     - bitwarden-cli
     - btop
     - curl
+    - discord-canary
     - dotnet-sdk
     - eza
     - fd
@@ -15,11 +16,15 @@ packages:
     - git
     - imagemagick
     - jq
+    - kvantum
+    - kvantum-qt5
     - lazygit
     - npm
     - openssh
     - poppler
     - python-pip
+    - qt5ct
+    - qt6ct
     - resvg
     - ripgrep
     - tmux
