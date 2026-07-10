@@ -10,8 +10,6 @@ echo "Installing native packages..."
 
 # Arch-based
 {{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
-sudo pacman -Sy --noconfirm
-
 pkgs=()
 {{ range .packages.arch }}
 if ! pacman -Q "{{ . }}" &>/dev/null; then
@@ -21,6 +19,23 @@ fi
 
 if [[ ${#pkgs[@]} -gt 0 ]]; then
   echo "Installing pacman packages..."
+
+  if [ -t 0 ]; then
+    while true; do
+      read -r -p "Run 'pacman -Sy' to refresh package databases? [y/N] " reply || { echo "(input ended/cancelled)"; break; }
+      reply="${reply:-N}"
+      case "$reply" in
+        [Yy]*) sudo pacman -Sy --noconfirm; break ;;
+        [Nn]*) echo "Skipping package database refresh (default: no update)."; break ;;
+        *) continue ;;
+      esac
+    done
+  else
+    if [ "${CHEZMOI_SYSTEM_UPDATE:-0}" = "1" ]; then
+      sudo pacman -Sy --noconfirm
+    fi
+  fi
+
   sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 fi
 
