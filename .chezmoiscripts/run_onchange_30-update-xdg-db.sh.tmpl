@@ -1,0 +1,13 @@
+#!/bin/sh
+set -euo pipefail
+
+echo "Updating XDG MIME and desktop databases..."
+
+if ! update-mime-database "$HOME/.local/share/mime"; then
+  echo "warning: update-mime-database failed"
+fi
+if ! update-desktop-database "$HOME/.local/share/applications"; then
+  echo "warning: update-desktop-database failed"
+fi
+
+echo "Done."

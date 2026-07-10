@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=osu!lazer
-Exec=~/apps/osu/osu.AppImage %u
-Icon=x-osu-lazer
+Exec=/home/benq/apps/osu/osu.AppImage %u
+Icon=osu-lazer
 Categories=Game
 Terminal=false
 MimeType=application/x-osu-lazer;
