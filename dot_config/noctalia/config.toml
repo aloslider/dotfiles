@@ -1,0 +1,172 @@
+[shell]
+avatar_path = "/home/benq/.face"
+ui_scale = 1.1
+font_family = "Noto Sans"
+middle_click_opens_widget_settings = true
+setup_wizard_enabled = true
+
+[shell.animation]
+enabled = false
+speed = 1.0
+
+[shell.launcher]
+app_grid = false
+categories = true
+compact = false
+session_search = true
+show_icons = true
+sort_by_usage = true
+
+[shell.mpris]
+blacklist = []
+
+[shell.panel]
+transparency_mode = "solid"
+control_center_placement = "attached"
+launcher_placement = "floating"
+launcher_position = "center"
+session_placement = "floating"
+session_position = "center"
+
+[shell.shadow]
+alpha = 0.55
+direction = "down"
+
+[theme]
+mode = "dark"
+source = "builtin"
+builtin = "Catppuccin"
+wallpaper_scheme = "m3-content"
+
+[bar]
+order = ["main"]
+
+[bar.main]
+position = "top"
+enabled = true
+thickness = 34
+background_opacity = 0.0
+border = "outline"
+border_width = 0.0
+radius = 12
+concave_edge_corners = true
+margin_ends = 4
+margin_edge = 4
+padding = 8
+widget_spacing = 6
+scale = 1.0
+font_weight = 500
+hover_highlight = true
+layer = "top"
+reserve_space = true
+show_on_workspace_switch = true
+shadow = true
+contact_shadow = false
+panel_overlap = 1
+
+capsule = true
+capsule_fill = "surface_variant"
+capsule_opacity = 0.9
+capsule_padding = 6
+capsule_thickness = 0.76
+
+[dock]
+enabled = true
+position = "bottom"
+auto_hide = true
+icon_size = 48
+radius = 16
+background_opacity = 0.88
+shadow = true
+magnification = true
+magnification_scale = 1.45
+pinned = []
+show_running = true
+show_dots = true
+reserve_space = false
+
+[desktop_widgets]
+enabled = true
+
+[desktop_widgets.grid]
+visible = true
+cell_size = 16
+major_interval = 4
+
+[wallpaper]
+enabled = true
+directory = "/home/benq/Pictures/Wallpapers"
+fill_mode = "crop"
+transition = ["fade", "disc", "stripes", "wipe", "honeycomb"]
+transition_duration = 1500.0
+transition_on_startup = false
+
+[wallpaper.automation]
+enabled = false
+interval_seconds = 300
+order = "random"
+recursive = true
+
+[location]
+address = "Saint-Petersburg"
+auto_locate = false
+
+[weather]
+enabled = true
+unit = "metric"
+refresh_minutes = 30
+effects = true
+
+[nightlight]
+enabled = true
+force = true
+temperature_day = 6500
+temperature_night = 4577
+
+[idle]
+pre_action_fade_seconds = 5.0
+
+[idle.behavior.lock]
+enabled = true
+timeout = 660.0
+action = "lock"
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 600.0
+action = "screen_off"
+
+[idle.behavior.lock-and-suspend]
+enabled = false
+timeout = 1800.0
+action = "lock_and_suspend"
+
+[notification]
+position = "top_right"
+background_opacity = 0.97
+show_actions = true
+show_app_name = true
+
+[osd]
+position = "top_right"
+background_opacity = 0.97
+
+[brightness]
+enable_ddcutil = true
+
+[audio]
+enable_overdrive = false
+
+[system.monitor]
+enabled = true
+cpu_poll_seconds = 2.0
+memory_poll_seconds = 2.0
+disk_poll_seconds = 10.0
+
+[lockscreen]
+enabled = true
+blur_intensity = 0.5
+fingerprint = false
+
+[plugins]
+enabled = []
