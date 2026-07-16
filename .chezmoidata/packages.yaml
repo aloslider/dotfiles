@@ -30,6 +30,7 @@ packages:
     - tmux
     - unzip
     - wget
+    - wtype
     - yazi 
     - zoxide
     - zsh
