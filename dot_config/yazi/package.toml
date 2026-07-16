@@ -1,0 +1,14 @@
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "a6d30a1"
+hash = "7d4dd1afcb7ecbd3609c29a82d6dbc5c"
+
+[[plugin.deps]]
+use = "yazi-rs/flavors:kanagawa"
+rev = "4770a34"
+hash = "99aa06d3014798d86001c324468d497f"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"

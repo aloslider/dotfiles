@@ -1,0 +1,15 @@
+[plugin]
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
+
+prepend_previewers = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
+
+[preview]
+max_width = 2000
+max_height = 2000
+image_filter = "lanczos3"

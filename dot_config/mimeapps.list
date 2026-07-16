@@ -60,6 +60,7 @@ image/bmp=gthumb.desktop;
 image/tiff=gthumb.desktop;
 image/svg+xml=gthumb.desktop;
 image/*=gthumb.desktop;
+inode/directory=yazi.desktop
 text/html=librewolf.desktop;
 text/markdown=vim.desktop;
 text/plain=vim.desktop;

@@ -1,3 +1,4 @@
 defaultAgeKeyPath: "~/.config/age/key.txt"
 nixosAgeKeyPath: "/etc/age/key.txt"
 skipCreatingAgeKey: true
+use_yazi_picker: true
