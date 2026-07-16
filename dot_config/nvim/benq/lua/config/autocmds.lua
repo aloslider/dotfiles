@@ -3,16 +3,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight in yanking",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.hl_op({
+      higroup = 'IncSearch',
+      timeout = 100,
+    })
   end,
 })
 
 -- LSP
-vim.keymap.del('n', "gra")
-vim.keymap.del('n', "gri")
-vim.keymap.del('n', "grn")
-vim.keymap.del('n', "grr")
-vim.keymap.del('n', "grt")
+local function safe_del(mode, lhs)
+  pcall(vim.keymap.del, mode, lhs)
+end
+safe_del('n', "gra")
+safe_del('n', "gri")
+safe_del('n', "grn")
+safe_del('n', "grr")
+safe_del('n', "grt")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
