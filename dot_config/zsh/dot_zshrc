@@ -33,6 +33,9 @@ fi
 # Aliases
 alias imgedit=gthumb
 alias disk=ncdu
+alias dl-yt="bash $HOME/.local/scripts/yt-dlp/download.sh"
+alias compress-video="bash $HOME/.local/scripts/ffmpeg/compress-video.sh"
+alias convert-gif="bash $HOME/.local/scripts/ffmpeg/convert-gif-to-mp4.sh"
 
 # lazy
 lg() {

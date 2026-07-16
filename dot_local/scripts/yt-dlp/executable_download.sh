@@ -73,9 +73,7 @@ colored_read() {
     echo "$val"
 }
 
-# Helper for cookies selection (1-3 presets or direct custom value)
 select_cookies() {
-    # If current cookies looks like an old choice number, upgrade it to value
     case "$cookies" in
         1) cookies="firefox:~/.config/librewolf/librewolf" ;;
         2) cookies="firefox" ;;
@@ -108,7 +106,6 @@ select_cookies() {
                 cookies=""
                 ;;
             *)
-                # anything else is treated as a full custom cookies value
                 cookies="$cinput"
                 ;;
         esac
@@ -345,7 +342,6 @@ review_and_confirm() {
 }
 
 main() {
-    # Initialize to avoid pollution from previous runs / sourcing
     url=""
     cookies=""
     start_time=""
