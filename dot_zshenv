@@ -1,5 +1,2 @@
-export PATH="$HOME/.local/bin:$PATH"
-export ZSH="$HOME/.config/zsh/.oh-my-zsh"
-export ZDOTDIR="$HOME/.config/zsh"
-export EDITOR="nvim"
-export TERM="kitty"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+[[ -r $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
