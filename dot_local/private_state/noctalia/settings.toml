@@ -16,7 +16,7 @@ margin_ends = 1
 panel_overlap = 0
 radius_top_left = 0
 radius_top_right = 0
-start = [ "launcher", "group:g3", "group:g2", "media" ]
+start = [ "launcher", "group:g3", "group:g2", "ram", "group:g7", "group:g6", "media" ]
 
     [[bar.main.capsule_group]]
     enabled = true
@@ -24,14 +24,6 @@ start = [ "launcher", "group:g3", "group:g2", "media" ]
     id = "g1"
     members = [ "network", "bluetooth" ]
     opacity = 0.89999997615814209
-    padding = 6.0
-
-    [[bar.main.capsule_group]]
-    enabled = true
-    fill = "surface_variant"
-    id = "g2"
-    members = [ "sysmon", "ram", "temp", "network_rx", "network_tx" ]
-    opacity = 1.0
     padding = 6.0
 
     [[bar.main.capsule_group]]
@@ -46,7 +38,7 @@ start = [ "launcher", "group:g3", "group:g2", "media" ]
     enabled = true
     fill = "surface_variant"
     id = "g4"
-    members = [ "volume", "input_volume" ]
+    members = [ "privacy", "volume", "input_volume" ]
     opacity = 1.0
     padding = 6.0
 
@@ -55,6 +47,30 @@ start = [ "launcher", "group:g3", "group:g2", "media" ]
     fill = "surface_variant"
     id = "g5"
     members = [ "control-center" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.main.capsule_group]]
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "sysmon_cpu", "sysmon_cpu_temp" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.main.capsule_group]]
+    enabled = true
+    fill = "surface_variant"
+    id = "g6"
+    members = [ "network_rx", "network_tx" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.main.capsule_group]]
+    enabled = true
+    fill = "surface_variant"
+    id = "g7"
+    members = [ "sysmon_gpu", "sysmon_gpu_temp" ]
     opacity = 1.0
     padding = 6.0
 
@@ -194,11 +210,27 @@ color = "primary"
 [widget.media]
 title_scroll = "always"
 
+[widget.network]
+show_vpn_label = true
+
 [widget.sysmon]
 enabled = true
 
-[widget.temp]
+[widget.sysmon_cpu]
+type = "sysmon"
+
+[widget.sysmon_cpu_temp]
+stat = "cpu_temp"
+type = "sysmon"
+
+[widget.sysmon_gpu]
+glyph = "gpu-usage"
+stat = "gpu_vram"
+type = "sysmon"
+
+[widget.sysmon_gpu_temp]
 stat = "gpu_temp"
+type = "sysmon"
 
 [widget.workspaces]
 enabled = true
