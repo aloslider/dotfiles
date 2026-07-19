@@ -24,7 +24,7 @@ binds {
 
   // ─── Window Movement and Focus ───
   Mod+Shift+Q                         { close-window; }
-  Mod+Shift+V                         { switch-focus-between-floating-and-tiling; }
+  Mod+V                               { switch-focus-between-floating-and-tiling; }
 
   Mod+Home                            { focus-column-first; }
   Mod+End                             { focus-column-last; }
@@ -88,7 +88,7 @@ binds {
 
   // ─── Modes ───
   Mod+T                               { toggle-window-floating; }
-  Mod+CTRL+F                          { fullscreen-window; }
+  Mod+Shift+F                         { fullscreen-window; }
   Mod+W                               { toggle-column-tabbed-display; }
 
   // ─── Screenshots ───
