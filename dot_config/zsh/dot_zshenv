@@ -6,3 +6,11 @@ export TERM="kitty"
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVIM_APPNAME="nvim/benq"
 export GOPATH="$HOME/.local/go"
+export FZF_DEFAULT_OPTS="\
+  --border \
+  --preview-window right:60%:wrap \
+  --bind 'ctrl-u:preview-half-page-up' \
+  --bind 'ctrl-d:preview-half-page-down' \
+  --preview 'bat --color=always {}'
+  --bind '?:toggle-preview' \
+  --bind 'ctrl-/:change-preview-window(80%,hidden|)'"
