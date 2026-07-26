@@ -3,6 +3,7 @@
 
     environment {
         XDG_CURRENT_DESKTOP "Niri"
+        GTK_USE_PORTAL "1"
         QT_QPA_PLATFORM "wayland"
         QT_QPA_PLATFORMTHEME "xdgdesktopportal"
     }

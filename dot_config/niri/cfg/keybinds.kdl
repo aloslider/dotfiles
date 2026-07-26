@@ -6,7 +6,7 @@ binds {
   Mod+R                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+B                               hotkey-overlay-title="Open Browser: Librewolf" { spawn "librewolf"; }
   Mod+Shift+E                         hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
-  Mod+E                               hotkey-overlay-title="File Manager: Dolphin" { spawn "dolphin"; }
+  Mod+E                               hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
 
   // ─── Media Controls ───
   XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
