@@ -1,7 +1,27 @@
-[mgr]
-prepend_keymap = [
-  { on = "\\", run = "plugin split-tabs spl_toggle", desc = "Dual-pane: toggle" },
-  { on = "<Tab>", run = "plugin split-tabs spl_switch_tab", desc = "Dual-pane: switch pane" },
-  { on = "P", run = "plugin split-tabs spl_preview", desc = "Dual-pane: toggle bottom preview" },
-  { on = "<C-g>", run = "shell -- rofi -theme fullscreen-preview -show filebrowser -filebrowser-command \"ya emit reveal\" -filebrowser-directory \"$(pwd)\"", desc = "Grid view" },
-]
+[[mgr.prepend_keymap]]
+on  = "\\"
+run = "plugin split-tabs spl_toggle"
+desc = "Dual-pane: toggle" 
+
+[[mgr.prepend_keymap]]
+on  = "<Tab>"
+run = "plugin split-tabs spl_switch_tab"
+desc = "Dual-pane: switch pane" 
+
+[[mgr.prepend_keymap]]
+on  = "P"
+run = "plugin split-tabs spl_preview"
+desc = "Dual-pane: toggle bottom preview" 
+
+[[mgr.prepend_keymap]]
+on  = "<C-g>"
+run = "shell -- rofi -theme fullscreen-preview -show filebrowser -filebrowser-command \"ya emit reveal\" -filebrowser-directory \"$(pwd)\""
+desc = "Grid view" 
+
+[[mgr.prepend_keymap]]
+on  = "K"
+run = "plugin parent-arrow -1"
+
+[[mgr.prepend_keymap]]
+on  = "J"
+run = "plugin parent-arrow 1"
