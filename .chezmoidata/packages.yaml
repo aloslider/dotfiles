@@ -5,6 +5,7 @@ packages:
     - base-devel
     - bat
     - bitwarden-cli
+    - breeze-gtk
     - btop
     - curl
     - discord-canary
