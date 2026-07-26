@@ -28,6 +28,7 @@ packages:
     - qt6ct
     - resvg
     - ripgrep
+    - rofi
     - termusic
     - tmux
     - unzip
