@@ -1,0 +1,6 @@
+[mgr]
+prepend_keymap = [
+  { on = "\\", run = "plugin split-tabs spl_toggle", desc = "Dual-pane: toggle" },
+  { on = "<Tab>", run = "plugin split-tabs spl_switch_tab", desc = "Dual-pane: switch pane" },
+  { on = "P", run = "plugin split-tabs spl_preview", desc = "Dual-pane: toggle bottom preview" },
+]
