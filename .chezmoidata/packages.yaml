@@ -16,6 +16,7 @@ packages:
     - ffmpeg 
     - fzf
     - git
+    - grim
     - imagemagick
     - jq
     - kvantum
@@ -30,6 +31,8 @@ packages:
     - resvg
     - ripgrep
     - rofi
+    - satty
+    - slurp
     - tmux
     - unzip
     - wget

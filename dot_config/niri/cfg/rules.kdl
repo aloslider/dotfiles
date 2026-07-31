@@ -44,6 +44,13 @@ window-rule {
   open-maximized true
 }
 
+window-rule {
+    match app-id=r#"^com\.gabm\.satty$"#
+    open-floating true
+    min-width 800
+    min-height 600
+}
+
 layer-rule {
   match namespace="^noctalia-wallpaper"
   place-within-backdrop true

@@ -91,11 +91,6 @@ binds {
   Mod+Shift+F                         { fullscreen-window; }
   Mod+W                               { toggle-column-tabbed-display; }
 
-  // ─── Screenshots ───
-  CTRL+Shift+1                        { screenshot; }
-  CTRL+Shift+2                        { screenshot-screen; }
-  CTRL+Shift+3                        { screenshot-window; }
-
   // ─── Emergency Escape Key ───
   Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
@@ -107,4 +102,9 @@ binds {
   // --- Discord keybinds dirty trick ---
   CTRL+BracketLeft                    { spawn "~/.local/scripts/discord/focus-discord-toggle-mute.sh"; }
   CTRL+BracketRight                   { spawn "~/.local/scripts/discord/focus-discord-toggle-deafen.sh"; }
+
+  // --- Screnshot with grim+slurp+satty ---
+  Mod+S                               hotkey-overlay-title="Screenshot (region)"          { spawn "~/.local/scripts/gss-screenshot.sh" "region"; }
+  Mod+Shift+S                         hotkey-overlay-title="Screenshot (monitor-focused)" { spawn "~/.local/scripts/gss-screenshot.sh" "monitor-focused"; }
+  Mod+Ctrl+Shift+S                    hotkey-overlay-title="Screenshot (monitor-all)"     { spawn "~/.local/scripts/gss-screenshot.sh" "monitor-all"; }
 }
