@@ -7,6 +7,7 @@ packages:
     - bitwarden-cli
     - breeze-gtk
     - btop
+    - cmus
     - curl
     - discord-canary
     - dotnet-sdk
@@ -29,7 +30,6 @@ packages:
     - resvg
     - ripgrep
     - rofi
-    - termusic
     - tmux
     - unzip
     - wget
