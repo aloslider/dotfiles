@@ -16,7 +16,7 @@ margin_ends = 1
 panel_overlap = 0
 radius_top_left = 0
 radius_top_right = 0
-start = [ "launcher", "group:g3", "group:g2", "ram", "group:g7", "group:g6", "media" ]
+start = [ "launcher", "group:g3", "group:g2", "ram", "group:g7", "group:g6", "sysmon_disk" ]
 
     [[bar.main.capsule_group]]
     enabled = true
@@ -221,6 +221,10 @@ type = "sysmon"
 
 [widget.sysmon_cpu_temp]
 stat = "cpu_temp"
+type = "sysmon"
+
+[widget.sysmon_disk]
+stat = "disk_pct"
 type = "sysmon"
 
 [widget.sysmon_gpu]
