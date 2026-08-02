@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Winbox
-Exec=env QT_QPA_PLATFORM=xcb %k ~/apps/WinBox/WinBox %U
+Exec=env QT_QPA_PLATFORM=xcb sh -c '"$HOME/apps/WinBox/WinBox" "$@"' _ %U
 Type=Application
 Categories=Network;
 Terminal=false
