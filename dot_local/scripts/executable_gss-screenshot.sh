@@ -11,18 +11,13 @@ MODE="${1:-region}"
 
 case "${MODE}" in
 region)
-  grim -g "$(slurp -d)" -t ppm -
-  ;;
-window)
-  niri msg action screenshot-window
-  sleep 0.5
-  wl-paste --type image/png
+  still -p -c 'grim -g "$(slurp -d)" -t ppm -'
   ;;
 monitor-focused)
-  grim -t ppm -o "$(niri msg --json focused-output | jq --raw-output .name)" -
+  still -p -c 'grim -t ppm -o "$(niri msg --json focused-output | jq --raw-output .name)" -'
   ;;
 monitor-all)
-  grim -t ppm -
+  still -p -c 'grim -t ppm -'
   ;;
 *)
   echo "'${MODE}' is not a supported, aborting!" >&2

@@ -44,6 +44,7 @@ packages:
     - nixfmt
     - prizrak-box-bin
     - python-xmlformatter
+    - still
     - tree-sitter-cli-github-bin
   go:
     - github.com/davidbudnick/redis-tui
