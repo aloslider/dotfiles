@@ -1,4 +1,4 @@
-return { 
+return {
   cmd = {
     'roslyn-language-server',
     '--logLevel',
