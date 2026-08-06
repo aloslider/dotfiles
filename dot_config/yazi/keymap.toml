@@ -19,9 +19,9 @@ run = "shell -- rofi -theme fullscreen-preview -show filebrowser -filebrowser-co
 desc = "Grid view" 
 
 [[mgr.prepend_keymap]]
-on  = "K"
+on  = "<C-k>"
 run = "plugin parent-arrow -1"
 
 [[mgr.prepend_keymap]]
-on  = "J"
+on  = "<C-j>"
 run = "plugin parent-arrow 1"
