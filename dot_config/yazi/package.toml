@@ -8,6 +8,11 @@ use = "yazi-rs/flavors:kanagawa"
 rev = "4770a34"
 hash = "99aa06d3014798d86001c324468d497f"
 
+[[plugin.deps]]
+use = "boydaihungst/restore"
+rev = "7bfcfcb"
+hash = "bbb1569978e6d2b3e8343c6ca08a4ea6"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "04985d1"
