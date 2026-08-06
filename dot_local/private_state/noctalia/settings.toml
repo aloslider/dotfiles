@@ -165,6 +165,18 @@ widget_order = [
         stat = "cpu_usage"
         stat2 = "cpu_temp"
 
+[notification]
+filter_order = [ "filter" ]
+
+    [notification.filter.filter]
+    allow_permanent = false
+    enabled = true
+    match = "satty"
+    override_duration = 500
+    play_sound = true
+    save_history = false
+    show_toast = true
+
 [shell]
 show_location = false
 ui_scale = 1.0000000074505806
