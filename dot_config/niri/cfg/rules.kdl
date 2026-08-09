@@ -38,7 +38,7 @@ window-rule {
   match app-id="chromium"
   match app-id="brave"
   match app-id="prizrak-box"
-  match app-id="com.discordapp.Discord"
+  match app-id="^discord.*"
   match app-id="org.telegram.desktop"
   match app-id="kitty"
   open-maximized true
