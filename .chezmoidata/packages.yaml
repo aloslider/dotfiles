@@ -9,7 +9,6 @@ packages:
     - btop
     - cmus
     - curl
-    - discord-canary
     - dotnet-sdk
     - eza
     - fd
@@ -47,4 +46,26 @@ packages:
     - still
     - tree-sitter-cli-github-bin
   go:
-    - github.com/davidbudnick/redis-tui
+    - id: github.com/davidbudnick/redis-tui
+      version: v1.0.41
+
+  flatpak_remotes:
+    - name: flathub
+      url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    - name: flathub-beta
+      url: https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+  x-fp-stable: &fp_stable
+    remote: flathub
+    branch: stable
+  x-fp-beta: &fp_beta
+    remote: flathub-beta
+    branch: beta
+
+  flatpak:
+    - <<: *fp_stable
+      id: com.github.tchx84.Flatseal
+    - <<: *fp_stable
+      id: com.usebottles.bottles
+    - <<: *fp_beta
+      id: com.discordapp.DiscordCanary

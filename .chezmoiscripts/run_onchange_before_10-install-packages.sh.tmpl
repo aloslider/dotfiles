@@ -1,5 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -euo pipefail
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
 
 # NixOS
 {{ if eq .chezmoi.osRelease.id "nixos" }}
@@ -10,35 +12,21 @@ echo "Installing native packages..."
 
 # Arch-based
 {{ if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") }}
+
+if [ "$UPDATE" = "1" ]; then
+  sudo pacman -Syu --noconfirm
+else
+  echo "Skipping system refresh+upgrade (CHEZMOI_SYSTEM_UPDATE!=1)"
+fi
+
+# install packages
 pkgs=()
 {{ range .packages.arch }}
-if ! pacman -Q "{{ . }}" &>/dev/null; then
-  pkgs+=("{{ . }}")
-fi
+pacman -Q "{{ . }}" &>/dev/null || pkgs+=("{{ . }}")
 {{ end }}
+((${#pkgs[@]})) && sudo pacman -S --noconfirm --needed "${pkgs[@]}"
 
-if [[ ${#pkgs[@]} -gt 0 ]]; then
-  echo "Installing pacman packages..."
-
-  if [ -t 0 ]; then
-    while true; do
-      read -r -p "Run 'pacman -Sy' to refresh package databases? [y/N] " reply || { echo "(input ended/cancelled)"; break; }
-      reply="${reply:-N}"
-      case "$reply" in
-        [Yy]*) sudo pacman -Sy --noconfirm; break ;;
-        [Nn]*) echo "Skipping package database refresh (default: no update)."; break ;;
-        *) continue ;;
-      esac
-    done
-  else
-    if [ "${CHEZMOI_SYSTEM_UPDATE:-0}" = "1" ]; then
-      sudo pacman -Sy --noconfirm
-    fi
-  fi
-
-  sudo pacman -S --noconfirm --needed "${pkgs[@]}"
-fi
-
+# Paru + AUR
 if command -v paru >/dev/null 2>&1; then
   echo "Paru is already installed."
 else
@@ -51,6 +39,13 @@ else
   rm -rf "$build_dir"
 fi
 
+if [ "$UPDATE" = "1" ]; then
+  paru -Su --noconfirm
+else
+  echo "Skipping paru upgrade (CHEZMOI_SYSTEM_UPDATE!=1)"
+fi
+
+# install AUR packages
 aur_pkgs=()
 {{ range .packages.aur }}
 if ! pacman -Q "{{ . }}" &>/dev/null; then
@@ -66,28 +61,67 @@ fi
 
 # Go packages
 go_pkgs=()
-{{ range .packages.go }}
-  go_pkgs+=("{{ . }}")
-{{ end }}
 
 if ! command -v go >/dev/null 2>&1; then
   echo "Go is not installed, skipping packages installation..."
 else
-  for pkg in "${go_pkgs[@]}"; do
-    echo "Installing: $pkg"
-    go install "${pkg}@latest"
-  done
+  # Install packages
+  {{ range .packages.go }}
+  name="{{ .id }}"
+
+  # Update package version
+  version=""
+  if [ "$UPDATE" = "1" ]; then
+    version="latest"
+  else
+    version="{{ .version | default "latest" }}" # default to latest instead of fail
+  fi
+  go install "${name}@${version}"
+  {{ end }}
 fi
 
 # Nix packages
-if ! command -v nix >/dev/null 2>&1; then
+if ! command -v nix > /dev/null 2>&1; then
   echo "Nix is not installed, skipping packages installation..."
 else
   FLAKE_DIR="$HOME/.config/nixpkgs"
+
+  # Update profile
+  if [ "$UPDATE" = "1" ]; then
+    nix profile upgrade '.*'
+  else
+    echo "Skipping Nix profile upgrade (CHEZMOI_SYSTEM_UPDATE!=1)"
+  fi
+
+  # Install packages
   if [ -d "$FLAKE_DIR" ] && [ -f "$FLAKE_DIR/flake.nix" ]; then
     echo "Installing Nix packages..."
     nix profile install "$FLAKE_DIR" || true
   fi
+fi
+
+# Flatpak
+if ! command -v flatpak > /dev/null 2>&1; then
+  echo "Flatpak not installed, skipping apps installation..."
+else
+  if [ "$UPDATE" = "1" ]; then
+    flatpak update -y --noninteractive
+  else
+    # install if missing only (your current check)
+  fi
+  {{ range .packages.flatpak_remotes }}
+  flatpak remote-add --if-not-exists --system "{{ .name }}" "{{ .url }}" || true
+  {{ end }}
+
+  {{ range .packages.flatpak }}
+  remote="{{ .remote | default "flathub" }}"
+  branch="{{ .branch | default "stable" }}" 
+  app="{{ .id }}"
+  if ! flatpak info --system "$app//$branch" &>/dev/null; then
+    echo "Installing Flatpak: $app ($remote/$branch)"
+    flatpak install -y --system --noninteractive "$remote" "$app//$branch"
+  fi
+  {{ end }}
 fi
 
 echo "Done"
