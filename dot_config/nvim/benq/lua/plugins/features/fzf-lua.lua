@@ -1,3 +1,15 @@
+local function search_in_root()
+  local oil_ok, oil = pcall(require, "oil")
+  if oil_ok and vim.bo.filetype == "oil" then
+    return oil.get_current_dir()
+  end
+  local buf = vim.api.nvim_buf_get_name(0)
+  if buf ~= "" and vim.fn.filereadable(buf) == 1 then
+    return vim.fn.fnamemodify(buf, ":p:h")
+  end
+  return vim.fn.getcwd()
+end
+
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -22,9 +34,19 @@ return {
 			desc="Find files in project directory"
 		},
 		{
+			"<leader>fF",
+			function() require("fzf-lua").files({ cwd = search_in_root() }) end,
+			desc="Find files in current buffer's directory"
+		},
+		{
 			"<leader>fg",
 			function() require("fzf-lua").live_grep() end,
 			desc="Find by grepping in project directory"
+		},
+		{
+			"<leader>fg",
+			function() require("fzf-lua").live_grep({ cwd = search_in_root() }) end,
+			desc="Find by grepping in current buffer's directory"
 		},
 		{
 			"<leader>fc",
