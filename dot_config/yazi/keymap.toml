@@ -14,4 +14,9 @@ prepend_keymap = [
 	{ on = "u",          run = "plugin restore", desc = "Restore last deleted files/folders" },
 	{ on = ["i", "u"], run = "plugin restore -- --interactive", desc = "Restore deleted files/folders (Interactive)" },
 	{ on = ["i", "U"], run = "plugin restore -- --interactive --interactive-overwrite", desc = "Restore deleted files/folders (Interactive overwrite)" },
+
+  # zoxide
+  { on = [ "z" ], run = "plugin zoxide", desc = "Jump via zoxide" },
+  { on = [ "Z" ], run = "shell -- zoxide add \"$PWD\"", desc = "Add cwd to zoxide" },
+  { on = [ "i", "z" ], run = "shell --block -- zoxide edit", desc = "Edit zoxide database" },
 ]
