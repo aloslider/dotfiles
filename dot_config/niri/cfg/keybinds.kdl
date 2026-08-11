@@ -1,7 +1,7 @@
 binds {
   // ─── Applications ───
   Mod+Comma                           hotkey-overlay-title="Noctalia Settings" { spawn-sh "noctalia msg settings-toggle"; }
-  Mod+Slash                           hotkey-overlay-title="Noctalia Cheatsheet (v4 plugin - no direct v5 equiv yet)" { spawn-sh "noctalia msg settings-toggle bar"; }
+  Mod+Shift+Slash                     hotkey-overlay-title="Niri keybinds" { show-hotkey-overlay; }
   Mod+Return                          hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
   Mod+R                               hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+B                               hotkey-overlay-title="Open Browser: Librewolf" { spawn "librewolf"; }
@@ -81,8 +81,8 @@ binds {
   Mod+Equal                           { set-column-width "+10%"; }
   Mod+Shift+Minus                     { set-window-height "-10%"; }
   Mod+Shift+Equal                     { set-window-height "+10%"; }
-  Mod+BracketLeft                     { consume-window-into-column; }
-  Mod+BracketRight                    { expel-window-from-column; }
+  Mod+BracketLeft                     hotkey-overlay-title="Consume into column" { consume-window-into-column; }
+  Mod+BracketRight                    hotkey-overlay-title="Expel from column"   { expel-window-from-column; }
   Mod+CTRL+K                          { focus-window-up; }
   Mod+CTRL+J                          { focus-window-down; }
 
