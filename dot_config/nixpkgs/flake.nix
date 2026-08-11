@@ -14,7 +14,6 @@
       packages.${system}.default = pkgs.buildEnv {
         name = "user-packages";
         paths = with pkgs; [
-          nixd
           nixfmt
         ];
       };
