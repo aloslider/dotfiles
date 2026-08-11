@@ -9,7 +9,7 @@ require("config.theme") -- ignored by git
 vim.lsp.enable({
   "html",
   "lua_ls",
-  "nixd",
+  "nil_ls",
   "roslyn_ls",
 })
 
