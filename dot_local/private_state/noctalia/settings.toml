@@ -1,4 +1,4 @@
-config_version = 2
+config_version = 8
 
 [audio]
 enable_overdrive = true
@@ -111,7 +111,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
     box_height = 70.0
@@ -131,7 +130,6 @@ widget_order = [
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 320.0
@@ -177,9 +175,11 @@ filter_order = [ "filter" ]
     save_history = false
     show_toast = true
 
+[accessibility]
+ui_scale = 1.0
+
 [shell]
 show_location = false
-ui_scale = 1.0000000074505806
 
     [shell.panel]
     open_near_click_control_center = true
@@ -236,7 +236,7 @@ stat = "cpu_temp"
 type = "sysmon"
 
 [widget.sysmon_disk]
-stat = "disk_pct"
+stat = "disk_free_pct"
 type = "sysmon"
 
 [widget.sysmon_gpu]

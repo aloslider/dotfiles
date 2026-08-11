@@ -1,8 +1,6 @@
 [shell]
 avatar_path = "/home/benq/.face"
-ui_scale = 1.1
 font_family = "Noto Sans"
-middle_click_opens_widget_settings = true
 setup_wizard_enabled = true
 
 [shell.animation]
@@ -13,9 +11,11 @@ speed = 1.0
 app_grid = false
 categories = true
 compact = false
-session_search = true
 show_icons = true
 sort_by_usage = true
+
+[shell.launcher.providers.session]
+global = true
 
 [shell.mpris]
 blacklist = []
