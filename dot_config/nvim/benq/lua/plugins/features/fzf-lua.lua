@@ -44,7 +44,7 @@ return {
 			desc="Find by grepping in project directory"
 		},
 		{
-			"<leader>fg",
+			"<leader>fG",
 			function() require("fzf-lua").live_grep({ cwd = search_in_root() }) end,
 			desc="Find by grepping in current buffer's directory"
 		},

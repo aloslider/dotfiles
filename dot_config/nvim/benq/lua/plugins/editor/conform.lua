@@ -27,7 +27,7 @@ return {
 	keys = {
 		{
 			mode = { "n", "v" },
-			"<leader>cF",
+			"<leader>bF",
 			function()
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
@@ -35,7 +35,7 @@ return {
 		},
 		{
 			mode = "n",
-			"<leader>cf",
+			"<leader>bf",
 			function()
 				local start_line = vim.fn.line(".")
 				local end_line = start_line

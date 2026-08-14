@@ -58,7 +58,11 @@ vim.keymap.set("n", "<C-w>-", "<cmd>split<cr>", { desc = "Split window horizonta
 vim.keymap.set("n", "<C-w>|", "<cmd>vsplit<cr>", { desc = "Split window vertically" })
 
 -- Diagnostics
-vim.keymap.set('n', "<leader>ld", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = vim.v.count1 }) end, { desc = "Next diagnostic" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -vim.v.count1 }) end, { desc = "Previous diagnostic" })
+vim.keymap.set("n", "]D", function() vim.diagnostic.jump({ count = math.huge, wrap = false }) end, { desc = "Last diagnostic" })
+vim.keymap.set("n", "[D", function() vim.diagnostic.jump({ count = -math.huge, wrap = false }) end, { desc = "First diagnostic" })
 
 -- Quickfix
 vim.keymap.set("n", "<leader>q",
@@ -80,3 +84,6 @@ vim.keymap.set("n", "<leader>q",
 	{ desc = "Toggle quickfix" })
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
+
+-- Wrap
+vim.keymap.set("n", "<leader>bw", ":set wrap!<CR>", { desc = "Toggle line wrap" })
