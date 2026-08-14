@@ -1,9 +1,26 @@
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = {
+		spacing = 2,
+		source = "if_many",
+		prefix = "●",
+	},
 	signs = true,
-	underline = true,
-	update_in_insert = false,
+	update_in_insert = true,
 	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = true,
+	},
+	jump = {
+		wrap = true,
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({
+				bufnr = bufnr,
+				scope = "cursor",
+				focus = false,
+			})
+		end,
+	},
 })
 
 vim.fn.sign_define('DapBreakpoint', {
