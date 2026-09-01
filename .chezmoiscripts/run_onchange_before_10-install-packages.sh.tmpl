@@ -107,7 +107,7 @@ else
   if [ "$UPDATE" = "1" ]; then
     flatpak update -y --noninteractive
   else
-    # install if missing only (your current check)
+    echo "Skipping Flatpak update (CHEZMOI_SYSTEM_UPDATE!=1)"
   fi
   {{ range .packages.flatpak_remotes }}
   flatpak remote-add --if-not-exists --system "{{ .name }}" "{{ .url }}" || true
