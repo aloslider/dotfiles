@@ -10,23 +10,6 @@ vim.keymap.set("n", "<ESC>",
 	end, 
 	{ desc = "Clear search highlight" })
 
--- Toggle whitespace characters
-vim.keymap.set('n', '<leader>w', function()
-  if vim.wo.list then
-    vim.wo.list = false
-  else
-    vim.opt.listchars = {
-      eol = '¬',
-      tab = '>·',
-      trail = '~',
-      extends = '>',
-      precedes = '<',
-      space = '␣'
-    }
-    vim.wo.list = true
-  end
-end, { desc = 'Toggle whitespace characters' })
-
 -- Move current line/selection up/down
 vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down", silent = true })
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up", silent = true })
@@ -85,5 +68,5 @@ vim.keymap.set("n", "<leader>q",
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 
--- Wrap
-vim.keymap.set("n", "<leader>bw", ":set wrap!<CR>", { desc = "Toggle line wrap" })
+-- -- Wrap
+-- vim.keymap.set("n", "<leader>bw", ":set wrap!<CR>", { desc = "Toggle line wrap" })
