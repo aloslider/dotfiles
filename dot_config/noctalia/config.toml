@@ -151,6 +151,9 @@ show_app_name = true
 position = "top_right"
 background_opacity = 0.97
 
+[osd.kinds]
+media = false
+
 [brightness]
 enable_ddcutil = true
 
@@ -168,5 +171,26 @@ enabled = true
 blur_intensity = 0.5
 fingerprint = false
 
+[lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+type = "login_box"
+output = "DP-2"
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+show_media = false
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+type = "login_box"
+output = "DP-3"
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+show_media = false
+
+[control_center]
+hidden_tabs = ["media"]
+
+[widget.media]
+enabled = false
+
 [plugins]
 enabled = []
+
