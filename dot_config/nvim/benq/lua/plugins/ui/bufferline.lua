@@ -7,7 +7,5 @@ return {
   keys = {
     { "<leader>bh",     "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
     { "<leader>bl",     "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
-    { "<leader><tab>h", "<cmd>tabmove -1<cr>", desc = "Move tab left" },
-    { "<leader><tab>l", "<cmd>tabmove +1<cr>", desc = "Move tab right" },
   },
 }

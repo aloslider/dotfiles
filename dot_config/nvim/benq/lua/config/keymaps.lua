@@ -43,8 +43,8 @@ vim.keymap.set({ "n", "v" }, "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New 
 vim.keymap.set({ "n", "v" }, "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close tab" })
 vim.keymap.set({ "n", "v" }, "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set({ "n", "v" }, "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
-vim.keymap.set({ "n", "v" }, "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last tab" })
-vim.keymap.set({ "n", "v" }, "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First tab" })
+vim.keymap.set({ "n", "v" }, "<leader><tab>h", "<cmd>tabmove -1<cr>", { desc = "Move tab left" })
+vim.keymap.set({ "n", "v" }, "<leader><tab>l", "<cmd>tabmove +1<cr>", { desc = "Move tab right" })
 
 -- Windows
 vim.keymap.set({ "n", "v" }, "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
