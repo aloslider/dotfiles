@@ -43,7 +43,7 @@ packages:
   aur:
     - nil-git
     - nixfmt
-    - prizrak-box-bin
+    - flclashx-bin
     - python-xmlformatter
     - still
     - tree-sitter-cli-github-bin
