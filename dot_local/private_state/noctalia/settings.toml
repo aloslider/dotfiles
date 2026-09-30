@@ -1,4 +1,4 @@
-config_version = 13
+config_version = 14
 
 [accessibility]
 ui_scale = 1.0
@@ -107,6 +107,9 @@ behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
     action = "screen_off"
     enabled = true
     timeout = 600.0
+
+[lockscreen]
+transition = []
 
 [lockscreen_widgets]
 enabled = true
@@ -237,7 +240,7 @@ community_palette = "Kanagawa Kasumi"
     enable_community_templates = false
 
 [wallpaper]
-transition = [ "disc", "fade", "honeycomb", "stripes", "wipe", "zoom" ]
+transition = []
 transition_on_startup = true
 
     [wallpaper.default]
