@@ -1,6 +1,13 @@
 return {
-	"akinsho/bufferline.nvim",
-	version = "*",
-	dependencies = "nvim-tree/nvim-web-devicons",
-	opts = {}
+  "akinsho/bufferline.nvim",
+  lazy = false,
+  version = "*",
+  dependencies = "nvim-tree/nvim-web-devicons",
+  opts = {},
+  keys = {
+    { "<leader>bh",     "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer left" },
+    { "<leader>bl",     "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer right" },
+    { "<leader><tab>h", "<cmd>tabmove -1<cr>", desc = "Move tab left" },
+    { "<leader><tab>l", "<cmd>tabmove +1<cr>", desc = "Move tab right" },
+  },
 }

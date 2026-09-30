@@ -7,7 +7,7 @@ vim.keymap.set("n", "<ESC>",
 	function()
 		vim.cmd('noh')
     vim.lsp.buf.clear_references()
-	end, 
+	end,
 	{ desc = "Clear search highlight" })
 
 -- Move current line/selection up/down
@@ -22,6 +22,21 @@ vim.keymap.set({ "n", "v" }, "<leader>bd", "<cmd>bdelete<cr>", { desc = "Close b
 vim.keymap.set({ "n", "v" }, "<leader>bD", "<cmd>bdelete!<cr>", { desc = "Close buffer (force)" })
 vim.keymap.set({ "n", "v" }, "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set({ "n", "v" }, "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set('n', '<leader>bw', function()
+  if vim.wo.list then
+    vim.wo.list = false
+  else
+    vim.opt.listchars = {
+      eol = '¬',
+      tab = '>·',
+      trail = '~',
+      extends = '>',
+      precedes = '<',
+      space = '␣'
+    }
+    vim.wo.list = true
+  end
+end, { desc = 'Toggle whitespace characters' })
 
 -- Tabs
 vim.keymap.set({ "n", "v" }, "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New tab" })
@@ -65,8 +80,6 @@ vim.keymap.set("n", "<leader>q",
   	end
   end,
 	{ desc = "Toggle quickfix" })
+
 vim.keymap.set("n", "[q", "<cmd>cprev<CR>", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
-
--- -- Wrap
--- vim.keymap.set("n", "<leader>bw", ":set wrap!<CR>", { desc = "Toggle line wrap" })
