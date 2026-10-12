@@ -22,6 +22,8 @@ packages:
     - kvantum-qt5
     - lazygit
     - npm
+    - noctalia
+    - noctalia-greeter
     - openssh
     - poppler
     - python-pip
