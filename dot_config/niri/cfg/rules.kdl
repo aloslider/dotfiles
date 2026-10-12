@@ -16,6 +16,23 @@ window-rule {
 }
 
 window-rule {
+  match app-id=r#"^steam_app_\d+$"#
+
+  open-floating false
+  open-fullscreen true
+
+  geometry-corner-radius 0
+  clip-to-geometry false
+
+  border {
+    off
+  }
+  shadow {
+    off
+  }
+}
+
+window-rule {
   match app-id="librewolf" title="Picture-in-Picture"
 
   open-floating true
