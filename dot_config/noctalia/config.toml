@@ -194,3 +194,7 @@ enabled = false
 [plugins]
 enabled = []
 
+[keybinds]
+# use tab instead of arrows
+up = ["up", "shift+tab", "shift+iso_left_tab"]
+down = ["down", "tab"]
