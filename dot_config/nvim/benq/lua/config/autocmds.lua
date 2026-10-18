@@ -99,3 +99,14 @@ end
 
 vim.api.nvim_create_user_command("FloatingTerminal", toggle_terminal, {})
 vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal, { desc = "Toggle floating terminal" })
+
+-- Make flash.nvim not trigger in quicklist buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function(event)
+    vim.keymap.set("n", "<CR>", function()
+      local info = vim.fn.getwininfo(vim.api.nvim_get_current_win())[1]
+      vim.cmd(info.loclist == 1 and ".ll" or ".cc")
+    end, { buffer = event.buf, desc = "Open list entry" })
+  end,
+})
