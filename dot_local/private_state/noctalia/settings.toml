@@ -1,4 +1,4 @@
-config_version = 14
+config_version = 15
 
 [accessibility]
 ui_scale = 1.0
@@ -107,6 +107,9 @@ behavior_order = [ "screen-off", "lock", "lock-and-suspend" ]
     action = "screen_off"
     enabled = true
     timeout = 600.0
+
+[location]
+address = ""
 
 [lockscreen]
 transition = []
@@ -223,6 +226,10 @@ media = false
 
 [shell]
 show_location = false
+
+    [shell.launcher]
+    category_icons_only = true
+    layout = "simple"
 
     [shell.panel]
     open_near_click_control_center = true
