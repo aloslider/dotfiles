@@ -1,7 +1,6 @@
 #!/bin/sh
 set -eu
 
-APP_NAME="discord-canary"
 KEY="${1:-${KEY:-}}"
 
 if [ -z "$KEY" ]; then
@@ -13,11 +12,15 @@ fi
 PREV_FOCUS=$(niri msg -j focused-window | jq -r '.id // empty')
 WINS=$(niri msg -j windows)
 WSS=$(niri msg -j workspaces)
-DISCORD_ID=$(printf '%s' "$WINS" | jq -r --arg a "$APP_NAME" \
-  '.[] | select(.app_id == $a) | .id' | head -n1)
+DISCORD_ID=$(printf '%s' "$WINS" | jq -r --arg focus "$PREV_FOCUS" '
+  [ .[] | select(.app_id == "discord" or .app_id == "discord-canary") ]
+  | (map(select(.id == ($focus | tonumber? // -1))) | .[0].id) //
+    (map(select(.app_id == "discord-canary")) | .[0].id) //
+    (.[0].id // empty)
+')
 
 if [ -z "$DISCORD_ID" ]; then
-  notify-send "Discord not found" "Could not find $APP_NAME window"
+  notify-send "Discord not found" "No discord or discord-canary window"
   exit 1
 fi
 
