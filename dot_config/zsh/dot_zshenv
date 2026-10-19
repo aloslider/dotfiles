@@ -1,4 +1,5 @@
-export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/go/bin:$HOME/.dotnet/tools:$HOME/.cargo/bin:$PATH"
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$DOTNET_ROOT:/usr/local/bin:$HOME/bin:$HOME/.local/bin:$HOME/.local/go/bin:$DOTNET_ROOT/tools:$HOME/.cargo/bin:$PATH"
 export ZSH="$HOME/.config/zsh/.oh-my-zsh"
 export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
