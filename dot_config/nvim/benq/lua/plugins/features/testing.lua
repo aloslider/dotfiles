@@ -15,7 +15,10 @@ return {
 			})
 		end,
 		keys = {
-			{ "<F6>",  function() require("neotest").run.run({strategy = "dap"}) end, desc = "Run tests" },
+			{ "<leader>trn", function() require("neotest").run.run() end, desc = "Run nearest test" },
+			{ "<leader>tra", function() require("neotest").run.run({ suite = true }) end, desc = "Run all tests" },
+			{ "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "Run nearest test with debugger" },
+			{ "<leader>ts", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
 		}
 	}
 }
