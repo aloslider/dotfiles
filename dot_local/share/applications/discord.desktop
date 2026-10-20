@@ -3,7 +3,7 @@ Name=Discord
 StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
 GenericName=Internet Messenger
-Exec=/usr/bin/discord --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto --url -- %u
+Exec=env LIBVA_DRIVER_NAME=nvidia NVD_BACKEND=direct /usr/bin/discord --ignore-gpu-blocklist --use-gl=angle --use-angle=gl --enable-features=WaylandWindowDecorations,AcceleratedVideoDecodeLinuxGL,VaapiOnNvidiaGPUs --ozone-platform-hint=auto --url -- %u
 Icon=discord
 Type=Application
 Categories=Network;InstantMessaging;
