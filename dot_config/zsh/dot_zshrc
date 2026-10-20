@@ -30,6 +30,21 @@ alias dl-yt="bash $HOME/.local/scripts/yt-dlp/download.sh"
 alias compress-video="bash $HOME/.local/scripts/ffmpeg/compress-video.sh"
 alias convert-gif="bash $HOME/.local/scripts/ffmpeg/convert-gif-to-mp4.sh"
 
+# chezetc fix for root shell
+chezetc() {
+  if [[ $1 == cd ]]; then
+    local dir
+    if [[ -z $2 ]]; then
+      dir=${HOME}/.local/share/chezetc
+    else
+      dir=$(command chezetc source-path "$2") || return
+    fi
+    cd -- "$dir" || return
+    return
+  fi
+  command chezetc "$@"
+}
+
 # lazy
 lg() {
   lazygit "$@"
