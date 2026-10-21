@@ -103,6 +103,8 @@ binds {
   CTRL+BracketLeft                    repeat=false { spawn "~/.local/scripts/discord/toggle-key.sh" "m"; }
   CTRL+BracketRight                   repeat=false { spawn "~/.local/scripts/discord/toggle-key.sh" "d"; }
 
+  // CTRL+BracketLeft                 { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
   // --- Screnshot with grim+slurp+satty ---
   Mod+S                               hotkey-overlay-title="Screenshot (region)"          { spawn "~/.local/scripts/gss-screenshot.sh" "region"; }
   Mod+Shift+S                         hotkey-overlay-title="Screenshot (monitor-focused)" { spawn "~/.local/scripts/gss-screenshot.sh" "monitor-focused"; }
