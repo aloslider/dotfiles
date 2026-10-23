@@ -10,7 +10,6 @@ vim.lsp.enable({
   "html",
   "lua_ls",
   "nil_ls",
-  "roslyn_ls",
 })
 
 require("config.diagnostics")
