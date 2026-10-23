@@ -1,2 +1,14 @@
 os:
   editPreset: 'nvim'
+
+customCommands:
+  - key: 'P'
+    context: 'remotes'
+    description: 'Push current branch to selected remote'
+    command: 'git push {{.SelectedRemote.Name | quote}} HEAD:{{.CheckedOutBranch.Name | quote}}'
+    output: terminal
+  - key: 'A'
+    context: 'remotes'
+    description: 'Push current branch to every remote'
+    command: 'git remote | while IFS= read -r remote; do git push "$remote" "HEAD:{{.CheckedOutBranch.Name}}"; done'
+    output: terminal
