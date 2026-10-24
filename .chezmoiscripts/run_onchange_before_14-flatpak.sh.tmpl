@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run when CHEZMOI_SYSTEM_UPDATE changes.
+# {{ env "CHEZMOI_SYSTEM_UPDATE" | default "0" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
+
+echo "Installing Flatpak apps..."
+
+if ! command -v flatpak > /dev/null 2>&1; then
+  echo "Flatpak not installed, skipping apps installation..."
+else
+  if [ "$UPDATE" = "1" ]; then
+    flatpak update -y --noninteractive
+  else
+    echo "Skipping Flatpak update (CHEZMOI_SYSTEM_UPDATE!=1)"
+  fi
+  {{ range .packages.flatpak_remotes }}
+  flatpak remote-add --if-not-exists --system {{ .name | quote }} {{ .url | quote }} || true
+  {{ end }}
+
+  {{ range .packages.flatpak }}
+  remote={{ .remote | default "flathub" | quote }}
+  branch={{ .branch | default "stable" | quote }}
+  app={{ .id | quote }}
+  if ! flatpak info --system "$app//$branch" &>/dev/null; then
+    echo "Installing Flatpak: $app ($remote/$branch)"
+    flatpak install -y --system --noninteractive "$remote" "$app//$branch"
+  fi
+  {{ end }}
+fi
+
+echo "Done"

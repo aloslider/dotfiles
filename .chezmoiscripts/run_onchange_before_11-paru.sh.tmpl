@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run when CHEZMOI_SYSTEM_UPDATE changes.
+# {{ env "CHEZMOI_SYSTEM_UPDATE" | default "0" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+{{ if not (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos")) }}
+exit 0
+{{ end }}
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
+
+echo "Installing AUR packages..."
+
+if command -v paru >/dev/null 2>&1; then
+  echo "Paru is already installed."
+else
+  sudo pacman -S --noconfirm --needed git base-devel
+  build_dir="$HOME/.cache/chezmoi-paru-build"
+  rm -rf "$build_dir"
+  mkdir -p "$build_dir"
+  git clone https://aur.archlinux.org/paru.git "$build_dir"
+  makepkg --dir "$build_dir" -si --noconfirm
+  rm -rf "$build_dir"
+fi
+
+# Updates only when requested, otherwise install packages that are missing and leave the installed version.
+aur_pkgs=()
+{{ range .packages.aur }}
+name={{ . | trim | quote }}
+if [ "$UPDATE" = "1" ] || ! pacman -Q "$name" &>/dev/null; then
+  aur_pkgs+=("$name")
+fi
+{{ end }}
+
+if [[ ${#aur_pkgs[@]} -gt 0 ]]; then
+  if [ "$UPDATE" = "1" ]; then
+    echo "Installing latest AUR packages..."
+    paru -Su --noconfirm
+    paru -S --noconfirm --needed "${aur_pkgs[@]}"
+  else
+    echo "Installing AUR packages..."
+    paru -S --noconfirm --needed "${aur_pkgs[@]}"
+  fi
+elif [ "$UPDATE" != "1" ]; then
+  echo "Skipping AUR upgrades (CHEZMOI_SYSTEM_UPDATE!=1)"
+fi
+
+echo "Done"

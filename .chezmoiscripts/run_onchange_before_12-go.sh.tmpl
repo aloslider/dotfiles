@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run when CHEZMOI_SYSTEM_UPDATE changes.
+# {{ env "CHEZMOI_SYSTEM_UPDATE" | default "0" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
+
+echo "Installing Go packages..."
+
+if ! command -v go >/dev/null 2>&1; then
+  echo "Go is not installed, skipping packages installation..."
+else
+  {{ range .packages.go }}
+  name={{ .id | quote }}
+  if [ "$UPDATE" = "1" ]; then
+    version="latest"
+  else
+    version={{ .version | default "latest" | quote }}
+  fi
+  go install "${name}@${version}"
+  {{ end }}
+fi
+
+echo "Done"

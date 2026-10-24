@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run when CHEZMOI_SYSTEM_UPDATE changes.
+# {{ env "CHEZMOI_SYSTEM_UPDATE" | default "0" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+{{ if not (or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos")) }}
+exit 0
+{{ end }}
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
+
+echo "Installing pacman packages..."
+
+if [ "$UPDATE" = "1" ]; then
+  sudo pacman -Syu --noconfirm
+else
+  echo "Skipping system refresh+upgrade (CHEZMOI_SYSTEM_UPDATE!=1)"
+fi
+
+pkgs=()
+{{ range .packages.arch }}
+pacman -Q {{ . | trim | quote }} &>/dev/null || pkgs+=({{ . | trim | quote }})
+{{ end }}
+((${#pkgs[@]})) && sudo pacman -S --noconfirm --needed "${pkgs[@]}"
+
+echo "Done"

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Re-run when CHEZMOI_SYSTEM_UPDATE changes.
+# {{ env "CHEZMOI_SYSTEM_UPDATE" | default "0" }}
+{{ if eq .chezmoi.osRelease.id "nixos" }}
+exit 0
+{{ end }}
+
+UPDATE="${CHEZMOI_SYSTEM_UPDATE:-0}"
+
+echo "Installing Nix packages..."
+
+if ! command -v nix > /dev/null 2>&1; then
+  echo "Nix is not installed, skipping packages installation..."
+else
+  FLAKE_DIR="$HOME/.config/nixpkgs"
+
+  # Latest bumps flake.lock, otherwise install from the existing lock.
+  if [ -d "$FLAKE_DIR" ] && [ -f "$FLAKE_DIR/flake.nix" ]; then
+    if [ "$UPDATE" = "1" ]; then
+      echo "Updating Nix packages to latest..."
+      nix flake update --flake "$FLAKE_DIR"
+      nix profile upgrade --all
+      nix profile install "$FLAKE_DIR" || true
+    else
+      echo "Skipping Nix profile upgrade (CHEZMOI_SYSTEM_UPDATE!=1)"
+      if [ -f "$FLAKE_DIR/flake.lock" ]; then
+        nix profile install --no-update-lock-file "$FLAKE_DIR" || true
+      else
+        nix profile install "$FLAKE_DIR" || true
+      fi
+    fi
+  fi
+fi
+
+echo "Done"
