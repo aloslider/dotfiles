@@ -4,19 +4,14 @@ window-rule {
 }
 
 window-rule {
-  match app-id="steam"
-  exclude title=r#"^[Ss]team$"#
-  open-floating true
+  match app-id="steam" title=r#"^Steam$"#
+  open-maximized true
 }
 
 window-rule {
-  match app-id=r#"qalculate-qt$"#
-
+  match app-id="steam"
+  exclude title=r#"^[Ss]team$"#
   open-floating true
-  open-fullscreen false
-
-  default-column-width { proportion 0.2; }
-  default-window-height { proportion 0.2; }
 }
 
 window-rule {
@@ -40,6 +35,16 @@ window-rule {
   shadow {
     off
   }
+}
+
+window-rule {
+  match app-id=r#"qalculate-qt$"#
+
+  open-floating true
+  open-fullscreen false
+
+  default-column-width { proportion 0.2; }
+  default-window-height { proportion 0.2; }
 }
 
 window-rule {
