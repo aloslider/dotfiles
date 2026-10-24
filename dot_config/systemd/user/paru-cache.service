@@ -1,0 +1,6 @@
+[Unit]
+Description=Clean paru AUR cache
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/paru -Sc --aur --noconfirm
