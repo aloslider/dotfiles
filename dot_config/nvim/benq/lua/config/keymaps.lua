@@ -56,6 +56,14 @@ vim.keymap.set("n", "<C-w>-", "<cmd>split<cr>", { desc = "Split window horizonta
 vim.keymap.set("n", "<C-w>|", "<cmd>vsplit<cr>", { desc = "Split window vertically" })
 
 -- Diagnostics
+vim.keymap.del("n", "<C-w>d") -- remove default
+vim.keymap.del("n", "<C-w><C-d>") -- remove default
+vim.keymap.set("n", "<leader>bvl",
+  function()
+    local new_config = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_config })
+  end,
+  { desc = "Toggle diagnostic virtual_lines for buffer" })
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = vim.v.count1 }) end, { desc = "Next diagnostic" })
 vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -vim.v.count1 }) end, { desc = "Previous diagnostic" })
