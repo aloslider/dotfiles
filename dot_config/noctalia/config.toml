@@ -74,7 +74,7 @@ position = "top"
 enabled = true
 thickness = 34
 background_opacity = 0.0
-border = "outline"
+border = "outline_variant"
 border_width = 0.0
 radius = 12
 concave_edge_corners = true
@@ -93,7 +93,7 @@ contact_shadow = false
 panel_overlap = 1
 
 capsule = true
-capsule_fill = "surface_variant"
+capsule_fill = "surface_container"
 capsule_opacity = 0.9
 capsule_padding = 6
 capsule_thickness = 0.76
