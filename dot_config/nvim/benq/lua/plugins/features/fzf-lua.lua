@@ -22,6 +22,13 @@ return {
 			}
 		},
 		keymap = {
+			builtin = {
+				true,
+				["<M-j>"] = "preview-down",
+				["<M-k>"] = "preview-up",
+				["<C-M-j>"] = "preview-page-down",
+				["<C-M-k>"] = "preview-page-up",
+			},
 			fzf = {
 				["ctrl-q"] = "select-all+accept"
 			}
