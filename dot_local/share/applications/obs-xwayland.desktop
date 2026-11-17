@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OBS Studio (XWayland)
+Comment=OBS Studio running through XWayland (XCB)
+Exec=env QT_QPA_PLATFORM=xcb obs
+Icon=com.obsproject.Studio
+Terminal=false
+Categories=AudioVideo;Recorder;Player;
+StartupNotify=true
