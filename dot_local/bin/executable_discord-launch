@@ -1,0 +1,4 @@
+#!/bin/sh
+discord-patch || echo "discord-patch failed, launching unpatched" >&2
+exec env LIBVA_DRIVER_NAME=nvidia NVD_BACKEND=direct /usr/bin/discord \
+  --ozone-platform=wayland --use-gl=angle --disable-gpu-sandbox "$@"
