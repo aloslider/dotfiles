@@ -36,9 +36,15 @@ vim.fn.sign_define('DapStopped', {
   linehl = 'DapBreakpoint',
   numhl = 'DapBreakpoint'
 })
+local a = 5
 vim.fn.sign_define('DapBreakpointRejected', {
   text = '⭕',
   texthl = 'DapStoppedSymbol',
   linehl = 'DapBreakpoint',
   numhl = 'DapBreakpoint'
 })
+
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underdotted = true, sp = "#e06c75" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn",  { underdotted = true, sp = "#e5c07b" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo",  { underdotted = true, sp = "#61afef" })
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint",  { underdotted = true, sp = "#56b6c2" })
