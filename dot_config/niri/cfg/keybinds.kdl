@@ -100,10 +100,10 @@ binds {
   Mod+O                               repeat=false { toggle-overview; }
 
   // --- Discord keybinds dirty trick ---
-  CTRL+BracketLeft                    repeat=false { spawn "~/.local/scripts/discord/toggle-key.sh" "m"; }
+  // CTRL+BracketLeft                    repeat=false { spawn "~/.local/scripts/discord/toggle-key.sh" "m"; }
   CTRL+BracketRight                   repeat=false { spawn "~/.local/scripts/discord/toggle-key.sh" "d"; }
 
-  // CTRL+BracketLeft                 { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+  CTRL+BracketLeft                 { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
   // --- Screnshot with grim+slurp+satty ---
   Mod+S                               hotkey-overlay-title="Screenshot (region)"          { spawn "~/.local/scripts/gss-screenshot.sh" "region"; }
